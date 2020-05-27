@@ -11,6 +11,9 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+# /admin/config.yml
+publish_mode: editorial_workflow
+
 collections:
   - name: "artwork"
     label: "Artwork"
@@ -28,11 +31,11 @@ collections:
       - { label: "Folder", name: "folder", widget: "string" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "text" }
-      - { label: "Internal Note", name: "internalnote", widget: "text" }
+      - { label: "Internal Note", name: "internalNote", widget: "text" }
+      - { label: "Description", name: "body", widget: "markdown" }
       - {
           label: "Painting Technique",
-          name: "paintingtechnique",
+          name: "paintingTechnique",
           widget: "select",
           options:
             [
@@ -57,8 +60,47 @@ collections:
         }
       - { label: "Signed", name: "signed", widget: "boolean" }
       - { label: "Owner", name: "owner", widget: "string" }
+      - { label: "Date", name: "creationPeriod", widget: "string" }
+      - { label: "City", name: "city", widget: "string" }
+      - { label: "Country", name: "country", widget: "string" }
+      - {
+        label: Categories,
+        name: categories,
+        widget: object,
+        fields:
+          [
+            - {
+              label: "Maritime",
+              name: "categoryMaritime",
+              widget: "select",
+              options:
+                [
+                  { label: "A", value: "a" },
+                  {
+                    label: "B",
+                    value: "b",
+                  },
+                  { label: "C", value: "c" },
+                ],
+            },
+            - {
+              label: "Landscapes",
+              name: "categoryLandscapes",
+              widget: "select",
+              options:
+                [
+                  { label: "A", value: "a" },
+                  {
+                    label: "B",
+                    value: "b",
+                  },
+                  { label: "C", value: "c" },
+                ],
+            }
+          ],
+      }
+
       - { label: "Featured Image", name: "featuredimage", widget: image }
-      - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
 
   - name: "blog"
